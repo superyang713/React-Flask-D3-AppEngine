@@ -1,3 +1,4 @@
+import requests
 import flask
 from flask import jsonify, request
 
@@ -20,6 +21,17 @@ def user():
         "name": name.title()
     }
     response = jsonify(response)
+    response.headers["Access-Control-Allow-Origin"] = "*"
+
+    return response
+
+
+@app.route('/api/roc', methods=["GET"])
+def roc():
+    url = "https://data.cityofnewyork.us/resource/tg4x-b46p.json"
+    data = requests.get(url).json()
+
+    response = jsonify(data)
     response.headers["Access-Control-Allow-Origin"] = "*"
 
     return response
