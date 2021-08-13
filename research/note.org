@@ -1,0 +1,31 @@
+Create the app template
+#+begin_src sh
+  npx create-react-app app
+#+end_src
+
+Deploy to app engine
+#+begin_src sh
+  npm run build
+  gcloud app deploy 
+#+end_src
+
+* Purpose of the app
+  1. offline batch prediction.
+  2. The webapp displays the AUR plot based on the latest model (assuming the
+     model is constantly changing.)
+  3. An authorized user specifies a date range and threshold. The app will
+     generate an csv file, containing the prediction result.
+  4. The result includes the predicted churned user list and converted user
+     list.
+  
+* Backend Stack
+  1. Flask for API
+  2. If necessary, use Firestore (NoSQL) or Cloud SQL as database.
+
+* Frontend Stack
+  1. ReactJS for building client.
+  2. IAP for authentication.
+  3. plotly or D3 for visualization of AUC score for choosing appropriate threshold.
+
+* Deployment
+  1. GKE as the platform to host both frontend and backend.
