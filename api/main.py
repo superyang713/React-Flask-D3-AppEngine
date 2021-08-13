@@ -17,7 +17,7 @@ def user():
     name = name.split(".")[0] if "." in name else name
     response = {
         "email": email,
-        "name": name
+        "name": name.title()
     }
     response = jsonify(response)
     response.headers["Access-Control-Allow-Origin"] = "*"
