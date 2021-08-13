@@ -1,7 +1,7 @@
 import {AppBar, Toolbar, Button, makeStyles} from "@material-ui/core";
 import React, {useEffect, useState} from "react";
 import {Link as RouterLink} from "react-router-dom";
-import getUser from "../../hooks/user";
+import getUser from "../../api/user";
 
 const headersData = [{
     label: "About",
