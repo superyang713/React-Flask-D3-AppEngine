@@ -1,20 +1,15 @@
 import * as d3 from 'd3';
 
-export default function plotLineChart(data, d3Chart) {
+export default function draw(data, width, height, d3Chart) {
   const margin = {
     top: 20,
     right: 30,
     bottom: 30,
     left: 30
   };
-  const width = parseInt(d3.select('#d3demo')
-    .style('width')) - margin.left - margin.right;
-  const height = parseInt(d3.select('#d3demo')
-    .style('height')) - margin.top - margin.bottom;
-
   // Set up chart
   const svg = d3.select(d3Chart.current)
-    .attr('width', width + margin.left + margin.right)
+    .attr('width', width)
     .attr('height', height + margin.top + margin.bottom)
     .append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin
@@ -22,9 +17,7 @@ export default function plotLineChart(data, d3Chart) {
 
   // x axis scale
   const x = d3.scaleTime()
-    .domain(d3.extent(data, function(d) {
-      return d.date;
-    }))
+    .domain(d3.extent(data, d => d.date))
     .range([0, width]);
 
   svg.append('g')
@@ -32,9 +25,7 @@ export default function plotLineChart(data, d3Chart) {
     .call(d3.axisBottom(x));
 
   // Get the max value of counts
-  const max = d3.max(data, function(d) {
-    return d.count;
-  });
+  const max = d3.max(data, d => d.count);
 
   // y axis scale
   const y = d3.scaleLinear()
@@ -48,7 +39,7 @@ export default function plotLineChart(data, d3Chart) {
   svg.append('path')
     .datum(data)
     .attr('fill', 'none')
-    .attr('stroke', 'white')
+    .attr('stroke', 'black')
     .attr('stroke-width', 3)
     .attr('d', d3.line()
       .x(function(d) {
@@ -65,6 +56,6 @@ export default function plotLineChart(data, d3Chart) {
     .attr('y', (margin.top / 5 - 10))
     .attr('text-anchor', 'middle')
     .attr('font-size', '16px')
-    .attr('fill', 'white')
+    .attr('fill', 'black')
     .text('This is just a test using d3 for line plot');
 }
