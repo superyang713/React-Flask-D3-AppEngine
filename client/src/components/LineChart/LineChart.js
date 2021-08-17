@@ -1,5 +1,4 @@
 import * as d3 from 'd3';
-import './LineChart.css';
 
 function LineChart(props) {
     d3.select('#plot')
