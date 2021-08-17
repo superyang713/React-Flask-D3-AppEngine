@@ -2,8 +2,6 @@ import * as d3 from 'd3';
 
 
 export default function transformData(data) {
-    const parseDate = d3.timeParse('%Y-%m-%d');
-
     const permits = data.filter(event => (
         event.eventtype === 'Shooting Permit'
     ));
@@ -14,7 +12,7 @@ export default function transformData(data) {
     ];
 
     let CountsByDate = [];
-    dates.map(date => {
+    dates.map((date, i) => {
         let count = 0;
         permits.forEach(item => {
             let timestamp = item.enteredon.slice(0, 10);
@@ -22,8 +20,8 @@ export default function transformData(data) {
         });
 
         const counts = {
-            date: parseDate(date),
-            count: count
+            label: i,
+            value: count
         };
 
         CountsByDate.push(counts);

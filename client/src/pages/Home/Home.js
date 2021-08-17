@@ -12,9 +12,22 @@ export default function Home() {
         getRoc().then(data => setData(data));
     };
 
+    const props = {
+        width: 600,
+        height: 600,
+        data: data,
+        margin: {
+            left: 20,
+            right: 30,
+            top:30,
+            bottom: 30
+        }
+    };
+
   return (
     <div>
-      <LineChart width={600} height={400} data={data}/>
+      <button onClick={changeData}>Update</button>
+      <LineChart {...props} />
     </div>
   );
 }
