@@ -6,21 +6,24 @@ import Menu from "./Menu";
 import User from "./User";
 
 const useStyles = makeStyles(() => ({
-  root: {
-    backgroundColor: "white",
-    flexGrow: 1,
-  }}));
+    root: {
+        backgroundColor: "white",
+        flexGrow: 1,
+    }
+}));
 
 export default function Header() {
-  const {root} = useStyles();
+    const {
+        root
+    } = useStyles();
 
-  return (
-    <AppBar className={root} position="sticky">
-      <Toolbar>
-        <Logo />
-        <Menu />
-        <User />
-      </Toolbar>
-    </AppBar>
-  );
+    return (
+        <AppBar className={root} position="sticky">
+          <Toolbar>
+            <Logo />
+            <Menu />
+            <User />
+          </Toolbar>
+        </AppBar>
+    );
 }

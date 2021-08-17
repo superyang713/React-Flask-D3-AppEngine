@@ -1,6 +1,3 @@
-import * as d3 from 'd3';
-
-
 export default function transformData(data) {
     const permits = data.filter(event => (
         event.eventtype === 'Shooting Permit'

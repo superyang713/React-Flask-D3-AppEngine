@@ -2,7 +2,6 @@ import {makeStyles} from "@material-ui/core";
 import React, {useEffect, useState} from "react";
 import getUser from "../../api/user";
 
-
 const useStyles = makeStyles(() => ({
     user: {
         color: "black",
